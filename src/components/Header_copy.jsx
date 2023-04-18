@@ -25,7 +25,6 @@ function Header() {
   const { account } = useBetween(Share);
   const { ownerAddress, setOwnerAddress } = useBetween(Share);
   const { tokenID, setTokenID } = useBetween(Share); //id ที่เป็น obj จากการเลือก NFT ID ส่งไปหน้า contractInfo
-  console.log(tokenID);
   const { opensea, setOpensea } = useBetween(Share);
   const { share, setShare } = useBetween(Share);
   const { info, setInfo } = useBetween(Share);
@@ -46,7 +45,6 @@ function Header() {
 
   const { setAccount } = useBetween(Share);
   const { logout, setLogout } = useBetween(Share);
-  console.log(logout);
 
   const pageLogin = async () => {
     if (!window.ethereum) {
@@ -203,7 +201,6 @@ function Header() {
         .then((response) => {
           setImage(response);
           sessionStorage.setItem("image",JSON.stringify(response));
-          console.log(response);
           encryptStorage1.setItem("NFT_", JSON.stringify(response));
 
           // Check if assets array is empty

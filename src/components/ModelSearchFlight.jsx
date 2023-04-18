@@ -20,7 +20,7 @@ import seat from "../assets/img/takeoff.png";
 
 export const encryptStorage1 = new EncryptStorage("H@b'v4U*[8Y,m~:d", {});
 
-function Header({onCloseModal}) {
+function Header({ onCloseModal }) {
   const { account } = useBetween(Share);
   const { ownerAddress, setOwnerAddress } = useBetween(Share);
   const { tokenID, setTokenID } = useBetween(Share); //id ที่เป็น obj จากการเลือก NFT ID ส่งไปหน้า contractInfo
@@ -30,10 +30,10 @@ function Header({onCloseModal}) {
   const { triptype, setTriptype } = useBetween(Share);
   const { checkOpenseaAPI, setCheckOpenseaAPI } = useBetween(Share);
   const { image, setImage } = useBetween(Share);
-  
-  const { tripType, setTripType } = usePnrContext("R");
 
-  
+  const { tripType, setTripType } = usePnrContext(sessionStorage.dataSelectDetail != undefined ? sessionStorage.dataSelectDetail.tripType : "");
+  console.log(tripType);
+
   const { adult, setAdult } = usePnrContext("");
   const { infant, setInfant } = usePnrContext("");
   const { child, setChild } = usePnrContext("");
@@ -47,7 +47,6 @@ function Header({onCloseModal}) {
   const { rbdList, setRBDList } = usePnrContext([]);
   const { adultInfo, childInfo, infantInfo, setAdultInfo, setChildInfo, setInfantInfo } = usePnrContext([]);
   const { bookingPerson, setBookingPerson } = usePnrContext("");
-
 
   // console.log(originCode, destinationCode); //log ดูจังหวัด
 
@@ -200,16 +199,66 @@ function Header({onCloseModal}) {
   const onSubmit = async (e) => {
     e.preventDefault();
     setDataSeclect(dataSelectDetail);
-    sessionStorage.setItem("dataSelectDetail",JSON.stringify(dataSelectDetail))
+    sessionStorage.setItem("dataSelectDetail", JSON.stringify(dataSelectDetail));
     encryptStorage1.setItem("access_", dataSelectDetail);
     encryptStorage1.setItem("airport_", tokenID);
+
+    if (tripType != "R") {
+      if (adult_ + child_ + infant_ + bookingPerson > 8) {
+        // console.log("segment",adult_ + child_ + infant_  + bookingPerson );
+        setSearchFlight(false);
+        return alert("limited to 8 person/flight.");
+      } else {
+        if (adult < infant) {
+          setSearchFlight(false);
+          return alert("There must be at least as many adults as babies");
+        } else {
+          setSearchFlight(true);
+        }
+
+        if (adult_ + child_ + infant_ > 8) {
+          setSearchFlight(false);
+          return alert("The total number of adults, children, and babies cannot be greater than 8.");
+        }
+
+        setAdultInfo(adultPassenger);
+        setChildInfo(childPassenger);
+        setInfantInfo(infantPassenger);
+        sessionStorage.setItem("adultPassenger", JSON.stringify(adultPassenger));
+        sessionStorage.setItem("childPassenger", JSON.stringify(childPassenger));
+        sessionStorage.setItem("infantPassenger", JSON.stringify(infantPassenger));
+      }
+    } else {
+      if (adult_ * 2 + child_ * 2 + infant_ * 2 + bookingPerson > 8) {
+        // console.log("segment",adult_ * 2 + child_ * 2 + infant_ * 2 + bookingPerson );
+        setSearchFlight(false);
+        return alert("limited to 8 person/flight.");
+      } else {
+        if (adult < infant) {
+          setSearchFlight(false);
+          return alert("There must be at least as many adults as babies");
+        } else {
+          setSearchFlight(true);
+        }
+
+        if (adult_ * 2 + child_ * 2 + infant_ * 2 > 8) {
+          setSearchFlight(false);
+          return alert("The total number of adults, children, and babies cannot be greater than 8.");
+        }
+
+        setAdultInfo(adultPassenger);
+        setChildInfo(childPassenger);
+        setInfantInfo(infantPassenger);
+        sessionStorage.setItem("adultPassenger", JSON.stringify(adultPassenger));
+        sessionStorage.setItem("childPassenger", JSON.stringify(childPassenger));
+        sessionStorage.setItem("infantPassenger", JSON.stringify(infantPassenger));
+      }
+    }
 
     if (checkOpenseaAPI === contract) {
       // setRegised(true)
     } else {
-      alert(
-        "ไม่มี Transaction จาก Opensea API กรุณาติดต่อเจ้าหน้าที่หรือทำการตรวจสอบ Tracsaction บน Blockchain อีกครั้ง Heder_OG"
-      );
+      alert("ไม่มี Transaction จาก Opensea API กรุณาติดต่อเจ้าหน้าที่หรือทำการตรวจสอบ Tracsaction บน Blockchain อีกครั้ง Heder_OG");
       window.location.reload();
     }
     if (bookingPerson === 8) {
@@ -394,7 +443,7 @@ function Header({onCloseModal}) {
 
   useEffect(() => {
     if (tripType != "R") {
-      if (adult_ + child_ + infant_  + bookingPerson > 8) {
+      if (adult_ + child_ + infant_ + bookingPerson > 8) {
         // console.log("segment",adult_ + child_ + infant_  + bookingPerson );
         setSearchFlight(false);
         return alert("limited to 8 person/flight.");
@@ -419,10 +468,9 @@ function Header({onCloseModal}) {
         setAdultInfo(adultPassenger);
         setChildInfo(childPassenger);
         setInfantInfo(infantPassenger);
-      
       }
     } else {
-      if (adult_ * 2 + child_ * 2 + infant_ * 2 + bookingPerson> 8) {
+      if (adult_ * 2 + child_ * 2 + infant_ * 2 + bookingPerson > 8) {
         // console.log("segment",adult_ * 2 + child_ * 2 + infant_ * 2 + bookingPerson );
         setSearchFlight(false);
         return alert("limited to 8 person/flight.");
@@ -450,8 +498,6 @@ function Header({onCloseModal}) {
       }
     }
   }, [adult, child, infant, tripType]);
-
- 
 
   const child_ = Number(child);
   const infant_ = Number(infant);
@@ -575,11 +621,7 @@ function Header({onCloseModal}) {
           <SyncLoader color={"#36d7b7"} loading={loading} size={20} />
         </div>
       ) : (
-        <div
-          className={
-            account ? `grid grid-cols-12 bg-map2 lg:mx-20 sm:ml-2 rounded-3xl mt-8 shadow-2xl border` : `hidden`
-          }
-        >
+        <div className={account ? `grid grid-cols-12 bg-map2 lg:mx-20 sm:ml-2 rounded-3xl mt-8 shadow-2xl border` : `hidden`}>
           <div className="col-start-2 col-end-5 my-4">
             {tokenID && (
               <span className="">
@@ -707,13 +749,7 @@ function Header({onCloseModal}) {
                           })
                         : ""}
                     </Select> */}
-                    <Select
-                      id="small"
-                      required={true}
-                      sizing=""
-                      value={destinationCode}
-                      onChange={handleReturnOptionChange}
-                    >
+                    <Select id="small" required={true} sizing="" value={destinationCode} onChange={handleReturnOptionChange}>
                       {" "}
                       {filteredOptions.map((option) => (
                         <option key={option.value} value={option.value}>
@@ -728,16 +764,7 @@ function Header({onCloseModal}) {
                   <div className="">
                     <Label htmlFor="small" value="Departure Date" />
                   </div>
-                  <TextInput
-                    id="small"
-                    type="date"
-                    min={dateCalenda}
-                    name="date"
-                    max=""
-                    sizing=""
-                    required={true}
-                    onChange={(e) => setDepartDate(e.target.value)}
-                  />
+                  <TextInput id="small" type="date" min={dateCalenda} name="date" max="" sizing="" required={true} onChange={(e) => setDepartDate(e.target.value)} />
                 </div>
 
                 {tripType === "R" ? (
@@ -745,15 +772,7 @@ function Header({onCloseModal}) {
                     <div className="">
                       <Label htmlFor="small" value="Return Date" />
                     </div>
-                    <TextInput
-                      id="small"
-                      type="date"
-                      sizing=""
-                      min={dateCalenda}
-                      max=""
-                      required={true}
-                      onChange={(e) => setReturnDate(e.target.value)}
-                    />
+                    <TextInput id="small" type="date" sizing="" min={dateCalenda} max="" required={true} onChange={(e) => setReturnDate(e.target.value)} />
                   </div>
                 ) : null}
 
@@ -906,11 +925,7 @@ function Header({onCloseModal}) {
                   </div>
                 ) : (
                   <div className="col-start-5 col-end-9 my-4">
-                    <button
-                      disabled
-                      className="w-[100%] border rounded-full bg-gray-200 h-[50px] text-lg text-gray-50"
-                      type="submit"
-                    >
+                    <button disabled className="w-[100%] border rounded-full bg-gray-200 h-[50px] text-lg text-gray-50" type="submit">
                       Search Flight
                     </button>
                   </div>

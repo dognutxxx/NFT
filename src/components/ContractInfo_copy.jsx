@@ -1,5 +1,4 @@
 import React from "react";
-
 import { useState, useEffect } from "react";
 import moment from "moment";
 import { useDepartureSelectedContext } from "../context/DepartureSelectedContext";
@@ -14,11 +13,9 @@ import { useFinalOneStopReturnContext } from "../context/FinalOneStopReturnConte
 import { useFinalTwoStopReturnContext } from "../context/FinalTwoStopReturnContext";
 import { useResultBookingObjContext } from "../context/ResultBookingObjContext";
 import { usePnrContext } from "../context/PnrContext";
-
 import { useNavigate } from "react-router-dom";
 import { TextInput, Label, Button, Select } from "flowbite-react";
 import Swal from "sweetalert2";
-
 import { EncryptStorage } from "encrypt-storage";
 
 const encryptStorage2 = new EncryptStorage("H@b'v4U*[8Y,m~:d", {});
@@ -39,11 +36,9 @@ function contractInfo_copy() {
   const { setRoundTwo_TwoObjBookingInfo } = useResultBookingObjContext();
 
   const { onewayDirectObjBooking } = useResultBookingObjContext();
-  console.log(onewayDirectObjBooking);
   const { onewayOneStopObjBooking } = useResultBookingObjContext();
   const { onewayTwoStopObjBooking } = useResultBookingObjContext();
   const { roundDir_DirObjBookingInfo } = useResultBookingObjContext();
-  console.log(roundDir_DirObjBookingInfo);
   const { roundDir_OneObjBookingInfo } = useResultBookingObjContext();
   const { roundDir_TwoObjBookingInfo } = useResultBookingObjContext();
   const { roundOne_OneObjBookingInfo } = useResultBookingObjContext();
@@ -72,7 +67,7 @@ function contractInfo_copy() {
   const access = JSON.parse(valueTypeTrip);
   const typeType_ = JSON.parse(valueTypeTrip);
   const typeTrip = typeType_.tripType;
-  console.log(typeTrip);
+
 
   //FinalDirectDepartureContext
   const { depDirectDepCityCode_s1 } = useFinalDirectDepartureContext();
@@ -102,7 +97,7 @@ function contractInfo_copy() {
   // console.log("10Dep", depDirectDepartureDateTime_s1);
   // console.log("11Dep", depDirectArriveDateTime_s1);
   // console.log("12Dep", depDirectRBD_s1);
-  console.log("13Dep", depDirectSeq_s1);
+  // console.log("13Dep", depDirectSeq_s1);
 
   //FinalOneStopDepartureContext
   const { depOneStopDepCityCode_s1 } = useFinalOneStopDepartureContext();
@@ -267,7 +262,7 @@ function contractInfo_copy() {
   // console.log("10return", returnDirectDepartureDateTime_s1);
   // console.log("11return", returnDirectArriveDateTime_s1);
   // console.log("12return", returnDirectRBD_s1);
-  console.log("13return", returnDirectSeq_s1);
+  // console.log("13return", returnDirectSeq_s1);
 
   //FinalOneStopReturnContext
   const { returnOneStopDepCityCode_s1 } = useFinalOneStopReturnContext();
@@ -420,12 +415,12 @@ function contractInfo_copy() {
   const { inputCountryOfIssueContract } = useContractDetailContext();
   const { inputExpiryDateContract } = useContractDetailContext();
 
-  console.log(inputTitleContract);
-  console.log(inputFirstNameContract);
-  console.log(inputMiddleNameContract);
-  console.log(inputLastNameContract);
-  console.log(inputEmailContract);
-  console.log(inputMobilePhoneContract);
+  // console.log(inputTitleContract);
+  // console.log(inputFirstNameContract);
+  // console.log(inputMiddleNameContract);
+  // console.log(inputLastNameContract);
+  // console.log(inputEmailContract);
+  // console.log(inputMobilePhoneContract);
 
   const { setInputTitleContract } = useContractDetailContext();
   const { setInputFirstNameContract } = useContractDetailContext();
@@ -559,72 +554,6 @@ function contractInfo_copy() {
 
   const { adultInfo, childInfo, infantInfo } = usePnrContext();
 
-  console.log("Final Adult", adultInfo);
-  console.log("Final Child", childInfo);
-  console.log("Final Infant", infantInfo);
-
-  // const inputTitleAdultsPassenger = (e, i) => {
-  //   // adultInfo[i].title = e;
-  //   setInputTitle((adultInfo[i].title = e));
-  // };
-
-  // const inputFirstnameAdultsPassenger = (e, i) => {
-  //   // adultInfo[i].firstname = e;
-  //   // if (copyDetails === false) {
-  //   setInputFirstName((adultInfo[i].firstname = e));
-  //   // }
-  // };
-
-  // const inputMiddleNameAdultsPassenger = (e, i) => {
-  //   // adultInfo[i].middlename = e;
-  //   setInputMiddleName((adultInfo[i].middlename = e));
-  // };
-
-  // const inputLastnameAdultsPassenger = (e, i) => {
-  //   // adultInfo[i].lastname = e;
-  //   setInputLastName((adultInfo[i].lastname = e));
-  // };
-
-  // const inputEmailAdultsPassenger = (e, i) => {
-  //   // adultInfo[i].email = e;
-  //   setInputEmail((adultInfo[i].email = e));
-  // };
-
-  // const inputDateOfBirthAdultsPassenger = (e, i) => {
-  //   // adultInfo[i].birthday = e;
-  //   setInputDateOfBirth((adultInfo[i].birthday = e));
-  // };
-
-  // const inputMobilePhoneAdultsPassenger = (e, i) => {
-  //   // adultInfo[i].telNo = e;
-  //   setChildInputinputMobilePhone((adultInfo[i].telNo = e));
-  // };
-
-  // const inputTitleChildsPassenger = (e, i) => {
-  //   // adultInfo[i].title = e;
-  //   setChildInputTitle((childInfo[i].title = e));
-  // };
-
-  // const inputFirstnameChildsPassenger = (e, i) => {
-  //   // childInfo[i].firstname = e;
-  //   setChildInputFirstName((childInfo[i].firstname = e));
-  // };
-
-  // const inputMiddleNameChildsPassenger = (e, i) => {
-  //   // childInfo[i].middlename = e;
-  //   setChildInputMiddleName((childInfo[i].middlename = e));
-  // };
-
-  // const inputLastnameChildsPassenger = (e, i) => {
-  //   // childInfo[i].lastname = e;
-  //   setChildInputLastName((childInfo[i].lastname = e));
-  // };
-
-  // const inputEmailChildsPassenger = (e, i) => {
-  //   // childInfo[i].email = e;
-  //   setChildInputEmail((childInfo[i].email = e));
-  // };
-
   const { setAirline } = useDepartureSelectedContext();
   const { setDepDirectAirlineCode_s1 } = useDepartureSelectedContext();
   const { setTimeDuration } = useDepartureSelectedContext();
@@ -693,59 +622,7 @@ function contractInfo_copy() {
     return result;
   };
 
-  // const inputDateOfBirthChildsPassenger = (e, i) => {
-  //   if (totalAge(e) < 12 && totalAge(e) >= 2) {
-  //     setChildInputDateOfBirth((childInfo[i].birthday = e));
-  //   } else {
-  //     errorAlert(`Date of Birth of child might 2-12 years old.`);
-  //     setChildInputDateOfBirth((childInfo[i].birthday = ""));
-  //   }
-  // };
-
-  // const inputMobilePhoneChildsPassenger = (e, i) => {
-  //   // childInfo[i].telNo = e;
-  //   setChildInputinputMobilePhone((childInfo[i].telNo = e));
-  // };
-
-  // const inputTitleInfantsPassenger = (e, i) => {
-  //   // adultInfo[i].title = e;
-  //   setInfantInputTitle((infantInfo[i].title = e));
-  // };
-
-  // const inputFirstnameInfantsPassenger = (e, i) => {
-  //   // infantInfo[i].firstname = e;
-  //   setInfantInputFirstName((infantInfo[i].firstname = e));
-  // };
-
-  // const inputMiddleNameInfantsPassenger = (e, i) => {
-  //   // infantInfo[i].middlename = e;
-  //   setInfantInputMiddleName((infantInfo[i].middlename = e));
-  // };
-
-  // const inputLastnameInfantsPassenger = (e, i) => {
-  //   // infantInfo[i].lastname = e;
-  //   setInfantInputLastName((infantInfo[i].lastname = e));
-  // };
-
-  // const inputEmailInfantsPassenger = (e, i) => {
-  //   // infantInfo[i].email = e;
-  //   setInfantInputEmail((infantInfo[i].email = e));
-  // };
-
-  // const inputDateOfBirthInfantsPassenger = (e, i) => {
-  //   // infantInfo[i].birthday = e;
-  //   if (totalAge(e) < 2) {
-  //     setInfantInputDateOfBirth((infantInfo[i].birthday = e));
-  //   } else {
-  //     errorAlert(`Date of Birth at infant might 0-2 years old.`);
-  //     setInfantInputDateOfBirth((infantInfo[i].birthday = ""));
-  //   }
-  // };
-
-  // const inputMobilePhoneInfantsPassenger = (e, i) => {
-  //   // infantInfo[i].telNo = e;
-  //   setInfantInputinputMobilePhone((infantInfo[i].telNo = e));
-  // };
+  
 
   const totalTime = timeDuration?.slice(0, 2) + "hr " + timeDuration?.slice(2) + "m";
   const totalTime2 = timeDuration2?.slice(0, 2) + "hr " + timeDuration2?.slice(2) + "m";
@@ -759,9 +636,6 @@ function contractInfo_copy() {
   const [adultPassenger, setAdultPassenger] = useState([]);
   const [childPassenger, setChildPassenger] = useState([]);
   const [infantPassenger, setInfantPassenger] = useState([]);
-  console.log("adultPassenger", adultPassenger);
-  console.log("childPassenger", childPassenger);
-  console.log("infantPassenger", infantPassenger);
 
   useEffect(() => {
     handleAdultPassenger();
@@ -822,7 +696,6 @@ function contractInfo_copy() {
         setOnewayDirectObjBooking(onewayDirectObjBooking);
         sessionStorage.setItem("onewayDirectObjBooking", JSON.stringify(onewayDirectObjBooking));
       } else if (depOneStopSeq_s1 && depOneStopSeq_s2) {
-        console.log("OneStop");
 
         const onewayOneStopObjBooking = [
           {
@@ -1063,78 +936,7 @@ function contractInfo_copy() {
             adtPaxs: adultInfo,
             chdPaxs: childInfo,
             infPaxs: infantInfo,
-            //   "chdPaxs": [
-            //     {
-            //       "id": 2,
-            //       "paxType": "CHD",
-            //       "title": "MSTR",
-            //       "firstname": "nina",
-            //       "middlename": null,
-            //       "lastname": "aisoft",
-            //       "birthday": "2015-05-20T00:00:00",
-            //       "email": null,
-            //       "telNo": null,
-            //       "passportNumber": null,
-            //       "passportIssuingDate": "0001-01-01T00:00:00",
-            //       "passportExpiryDate": "0001-01-01T00:00:00",
-            //       "passportIssuingCountry": null,
-            //       "passportNationality": null,
-            //       "frequencyFlyerAirline": null,
-            //       "frequencyFlyerNumber": null,
-            //       "seatRequest": null,
-            //       "mealRequest": null,
-            //       "travelWithAdultID": 1,
-            //       "netRefund": 0.0,
-            //       "agentRefund": 0.0,
-            //       "refundAmount": 0.0,
-            //       "tickNoRefund": null,
-            //       "remarkRefund": null,
-            //       "StatusRefund": false,
-            //       "netReissue": 0.0,
-            //       "agentReissue": 0.0,
-            //       "reissueSelling": 0.0,
-            //       "tickNoReissueOld": null,
-            //       "tickNoReissueNew": null,
-            //       "remarkReissue": null,
-            //       "StatusReissue": false
-            //     }
-            //   ],
-            //   "infPaxs": [
-            //     {
-            //       "id": 3,
-            //       "paxType": "INF",
-            //       "title": "MSTR",
-            //       "firstname": "non",
-            //       "middlename": null,
-            //       "lastname": "aisoft",
-            //       "birthday": "2021-02-06T00:00:00",
-            //       "email": null,
-            //       "telNo": null,
-            //       "passportNumber": null,
-            //       "passportIssuingDate": "0001-01-01T00:00:00",
-            //       "passportExpiryDate": "0001-01-01T00:00:00",
-            //       "passportIssuingCountry": null,
-            //       "passportNationality": null,
-            //       "frequencyFlyerAirline": null,
-            //       "frequencyFlyerNumber": null,
-            //       "seatRequest": null,
-            //       "mealRequest": null,
-            //       "travelWithAdultID": 0,
-            //       "netRefund": 0.0,
-            //       "agentRefund": 0.0,
-            //       "refundAmount": 0.0,
-            //       "tickNoRefund": null,
-            //       "remarkRefund": null,
-            //       "StatusRefund": false,
-            //       "netReissue": 0.0,
-            //       "agentReissue": 0.0,
-            //       "reissueSelling": 0.0,
-            //       "tickNoReissueOld": null,
-            //       "tickNoReissueNew": null,
-            //       "remarkReissue": null,
-            //       "StatusReissue": false
-            //     }
-            //   ],
+            
             languageCode: "th",
           },
         ];
@@ -1234,78 +1036,7 @@ function contractInfo_copy() {
             adtPaxs: adultInfo,
             chdPaxs: childInfo,
             infPaxs: infantInfo,
-            //   "chdPaxs": [
-            //     {
-            //       "id": 2,
-            //       "paxType": "CHD",
-            //       "title": "MSTR",
-            //       "firstname": "nina",
-            //       "middlename": null,
-            //       "lastname": "aisoft",
-            //       "birthday": "2015-05-20T00:00:00",
-            //       "email": null,
-            //       "telNo": null,
-            //       "passportNumber": null,
-            //       "passportIssuingDate": "0001-01-01T00:00:00",
-            //       "passportExpiryDate": "0001-01-01T00:00:00",
-            //       "passportIssuingCountry": null,
-            //       "passportNationality": null,
-            //       "frequencyFlyerAirline": null,
-            //       "frequencyFlyerNumber": null,
-            //       "seatRequest": null,
-            //       "mealRequest": null,
-            //       "travelWithAdultID": 1,
-            //       "netRefund": 0.0,
-            //       "agentRefund": 0.0,
-            //       "refundAmount": 0.0,
-            //       "tickNoRefund": null,
-            //       "remarkRefund": null,
-            //       "StatusRefund": false,
-            //       "netReissue": 0.0,
-            //       "agentReissue": 0.0,
-            //       "reissueSelling": 0.0,
-            //       "tickNoReissueOld": null,
-            //       "tickNoReissueNew": null,
-            //       "remarkReissue": null,
-            //       "StatusReissue": false
-            //     }
-            //   ],
-            //   "infPaxs": [
-            //     {
-            //       "id": 3,
-            //       "paxType": "INF",
-            //       "title": "MSTR",
-            //       "firstname": "non",
-            //       "middlename": null,
-            //       "lastname": "aisoft",
-            //       "birthday": "2021-02-06T00:00:00",
-            //       "email": null,
-            //       "telNo": null,
-            //       "passportNumber": null,
-            //       "passportIssuingDate": "0001-01-01T00:00:00",
-            //       "passportExpiryDate": "0001-01-01T00:00:00",
-            //       "passportIssuingCountry": null,
-            //       "passportNationality": null,
-            //       "frequencyFlyerAirline": null,
-            //       "frequencyFlyerNumber": null,
-            //       "seatRequest": null,
-            //       "mealRequest": null,
-            //       "travelWithAdultID": 0,
-            //       "netRefund": 0.0,
-            //       "agentRefund": 0.0,
-            //       "refundAmount": 0.0,
-            //       "tickNoRefund": null,
-            //       "remarkRefund": null,
-            //       "StatusRefund": false,
-            //       "netReissue": 0.0,
-            //       "agentReissue": 0.0,
-            //       "reissueSelling": 0.0,
-            //       "tickNoReissueOld": null,
-            //       "tickNoReissueNew": null,
-            //       "remarkReissue": null,
-            //       "StatusReissue": false
-            //     }
-            //   ],
+            
             languageCode: "th",
           },
         ];
@@ -1428,78 +1159,7 @@ function contractInfo_copy() {
             adtPaxs: adultInfo,
             chdPaxs: childInfo,
             infPaxs: infantInfo,
-            //   "chdPaxs": [
-            //     {
-            //       "id": 2,
-            //       "paxType": "CHD",
-            //       "title": "MSTR",
-            //       "firstname": "nina",
-            //       "middlename": null,
-            //       "lastname": "aisoft",
-            //       "birthday": "2015-05-20T00:00:00",
-            //       "email": null,
-            //       "telNo": null,
-            //       "passportNumber": null,
-            //       "passportIssuingDate": "0001-01-01T00:00:00",
-            //       "passportExpiryDate": "0001-01-01T00:00:00",
-            //       "passportIssuingCountry": null,
-            //       "passportNationality": null,
-            //       "frequencyFlyerAirline": null,
-            //       "frequencyFlyerNumber": null,
-            //       "seatRequest": null,
-            //       "mealRequest": null,
-            //       "travelWithAdultID": 1,
-            //       "netRefund": 0.0,
-            //       "agentRefund": 0.0,
-            //       "refundAmount": 0.0,
-            //       "tickNoRefund": null,
-            //       "remarkRefund": null,
-            //       "StatusRefund": false,
-            //       "netReissue": 0.0,
-            //       "agentReissue": 0.0,
-            //       "reissueSelling": 0.0,
-            //       "tickNoReissueOld": null,
-            //       "tickNoReissueNew": null,
-            //       "remarkReissue": null,
-            //       "StatusReissue": false
-            //     }
-            //   ],
-            //   "infPaxs": [
-            //     {
-            //       "id": 3,
-            //       "paxType": "INF",
-            //       "title": "MSTR",
-            //       "firstname": "non",
-            //       "middlename": null,
-            //       "lastname": "aisoft",
-            //       "birthday": "2021-02-06T00:00:00",
-            //       "email": null,
-            //       "telNo": null,
-            //       "passportNumber": null,
-            //       "passportIssuingDate": "0001-01-01T00:00:00",
-            //       "passportExpiryDate": "0001-01-01T00:00:00",
-            //       "passportIssuingCountry": null,
-            //       "passportNationality": null,
-            //       "frequencyFlyerAirline": null,
-            //       "frequencyFlyerNumber": null,
-            //       "seatRequest": null,
-            //       "mealRequest": null,
-            //       "travelWithAdultID": 0,
-            //       "netRefund": 0.0,
-            //       "agentRefund": 0.0,
-            //       "refundAmount": 0.0,
-            //       "tickNoRefund": null,
-            //       "remarkRefund": null,
-            //       "StatusRefund": false,
-            //       "netReissue": 0.0,
-            //       "agentReissue": 0.0,
-            //       "reissueSelling": 0.0,
-            //       "tickNoReissueOld": null,
-            //       "tickNoReissueNew": null,
-            //       "remarkReissue": null,
-            //       "StatusReissue": false
-            //     }
-            //   ],
+           
             languageCode: "th",
           },
         ];
@@ -1622,78 +1282,7 @@ function contractInfo_copy() {
             adtPaxs: adultInfo,
             chdPaxs: childInfo,
             infPaxs: infantInfo,
-            //   "chdPaxs": [
-            //     {
-            //       "id": 2,
-            //       "paxType": "CHD",
-            //       "title": "MSTR",
-            //       "firstname": "nina",
-            //       "middlename": null,
-            //       "lastname": "aisoft",
-            //       "birthday": "2015-05-20T00:00:00",
-            //       "email": null,
-            //       "telNo": null,
-            //       "passportNumber": null,
-            //       "passportIssuingDate": "0001-01-01T00:00:00",
-            //       "passportExpiryDate": "0001-01-01T00:00:00",
-            //       "passportIssuingCountry": null,
-            //       "passportNationality": null,
-            //       "frequencyFlyerAirline": null,
-            //       "frequencyFlyerNumber": null,
-            //       "seatRequest": null,
-            //       "mealRequest": null,
-            //       "travelWithAdultID": 1,
-            //       "netRefund": 0.0,
-            //       "agentRefund": 0.0,
-            //       "refundAmount": 0.0,
-            //       "tickNoRefund": null,
-            //       "remarkRefund": null,
-            //       "StatusRefund": false,
-            //       "netReissue": 0.0,
-            //       "agentReissue": 0.0,
-            //       "reissueSelling": 0.0,
-            //       "tickNoReissueOld": null,
-            //       "tickNoReissueNew": null,
-            //       "remarkReissue": null,
-            //       "StatusReissue": false
-            //     }
-            //   ],
-            //   "infPaxs": [
-            //     {
-            //       "id": 3,
-            //       "paxType": "INF",
-            //       "title": "MSTR",
-            //       "firstname": "non",
-            //       "middlename": null,
-            //       "lastname": "aisoft",
-            //       "birthday": "2021-02-06T00:00:00",
-            //       "email": null,
-            //       "telNo": null,
-            //       "passportNumber": null,
-            //       "passportIssuingDate": "0001-01-01T00:00:00",
-            //       "passportExpiryDate": "0001-01-01T00:00:00",
-            //       "passportIssuingCountry": null,
-            //       "passportNationality": null,
-            //       "frequencyFlyerAirline": null,
-            //       "frequencyFlyerNumber": null,
-            //       "seatRequest": null,
-            //       "mealRequest": null,
-            //       "travelWithAdultID": 0,
-            //       "netRefund": 0.0,
-            //       "agentRefund": 0.0,
-            //       "refundAmount": 0.0,
-            //       "tickNoRefund": null,
-            //       "remarkRefund": null,
-            //       "StatusRefund": false,
-            //       "netReissue": 0.0,
-            //       "agentReissue": 0.0,
-            //       "reissueSelling": 0.0,
-            //       "tickNoReissueOld": null,
-            //       "tickNoReissueNew": null,
-            //       "remarkReissue": null,
-            //       "StatusReissue": false
-            //     }
-            //   ],
+            
             languageCode: "th",
           },
         ];
@@ -1845,78 +1434,7 @@ function contractInfo_copy() {
             adtPaxs: adultInfo,
             chdPaxs: childInfo,
             infPaxs: infantInfo,
-            //   "chdPaxs": [
-            //     {
-            //       "id": 2,
-            //       "paxType": "CHD",
-            //       "title": "MSTR",
-            //       "firstname": "nina",
-            //       "middlename": null,
-            //       "lastname": "aisoft",
-            //       "birthday": "2015-05-20T00:00:00",
-            //       "email": null,
-            //       "telNo": null,
-            //       "passportNumber": null,
-            //       "passportIssuingDate": "0001-01-01T00:00:00",
-            //       "passportExpiryDate": "0001-01-01T00:00:00",
-            //       "passportIssuingCountry": null,
-            //       "passportNationality": null,
-            //       "frequencyFlyerAirline": null,
-            //       "frequencyFlyerNumber": null,
-            //       "seatRequest": null,
-            //       "mealRequest": null,
-            //       "travelWithAdultID": 1,
-            //       "netRefund": 0.0,
-            //       "agentRefund": 0.0,
-            //       "refundAmount": 0.0,
-            //       "tickNoRefund": null,
-            //       "remarkRefund": null,
-            //       "StatusRefund": false,
-            //       "netReissue": 0.0,
-            //       "agentReissue": 0.0,
-            //       "reissueSelling": 0.0,
-            //       "tickNoReissueOld": null,
-            //       "tickNoReissueNew": null,
-            //       "remarkReissue": null,
-            //       "StatusReissue": false
-            //     }
-            //   ],
-            //   "infPaxs": [
-            //     {
-            //       "id": 3,
-            //       "paxType": "INF",
-            //       "title": "MSTR",
-            //       "firstname": "non",
-            //       "middlename": null,
-            //       "lastname": "aisoft",
-            //       "birthday": "2021-02-06T00:00:00",
-            //       "email": null,
-            //       "telNo": null,
-            //       "passportNumber": null,
-            //       "passportIssuingDate": "0001-01-01T00:00:00",
-            //       "passportExpiryDate": "0001-01-01T00:00:00",
-            //       "passportIssuingCountry": null,
-            //       "passportNationality": null,
-            //       "frequencyFlyerAirline": null,
-            //       "frequencyFlyerNumber": null,
-            //       "seatRequest": null,
-            //       "mealRequest": null,
-            //       "travelWithAdultID": 0,
-            //       "netRefund": 0.0,
-            //       "agentRefund": 0.0,
-            //       "refundAmount": 0.0,
-            //       "tickNoRefund": null,
-            //       "remarkRefund": null,
-            //       "StatusRefund": false,
-            //       "netReissue": 0.0,
-            //       "agentReissue": 0.0,
-            //       "reissueSelling": 0.0,
-            //       "tickNoReissueOld": null,
-            //       "tickNoReissueNew": null,
-            //       "remarkReissue": null,
-            //       "StatusReissue": false
-            //     }
-            //   ],
+            
             languageCode: "th",
           },
         ];
@@ -2014,79 +1532,7 @@ function contractInfo_copy() {
             adtPaxs: adultInfo,
             chdPaxs: childInfo,
             infPaxs: infantInfo,
-            // chdPaxs: childInfo,
-            //   "chdPaxs": [
-            //     {
-            //       "id": 2,
-            //       "paxType": "CHD",
-            //       "title": "MSTR",
-            //       "firstname": "nina",
-            //       "middlename": null,
-            //       "lastname": "aisoft",
-            //       "birthday": "2015-05-20T00:00:00",
-            //       "email": null,
-            //       "telNo": null,
-            //       "passportNumber": null,
-            //       "passportIssuingDate": "0001-01-01T00:00:00",
-            //       "passportExpiryDate": "0001-01-01T00:00:00",
-            //       "passportIssuingCountry": null,
-            //       "passportNationality": null,
-            //       "frequencyFlyerAirline": null,
-            //       "frequencyFlyerNumber": null,
-            //       "seatRequest": null,
-            //       "mealRequest": null,
-            //       "travelWithAdultID": 1,
-            //       "netRefund": 0.0,
-            //       "agentRefund": 0.0,
-            //       "refundAmount": 0.0,
-            //       "tickNoRefund": null,
-            //       "remarkRefund": null,
-            //       "StatusRefund": false,
-            //       "netReissue": 0.0,
-            //       "agentReissue": 0.0,
-            //       "reissueSelling": 0.0,
-            //       "tickNoReissueOld": null,
-            //       "tickNoReissueNew": null,
-            //       "remarkReissue": null,
-            //       "StatusReissue": false
-            //     }
-            //   ],
-            //   "infPaxs": [
-            //     {
-            //       "id": 3,
-            //       "paxType": "INF",
-            //       "title": "MSTR",
-            //       "firstname": "non",
-            //       "middlename": null,
-            //       "lastname": "aisoft",
-            //       "birthday": "2021-02-06T00:00:00",
-            //       "email": null,
-            //       "telNo": null,
-            //       "passportNumber": null,
-            //       "passportIssuingDate": "0001-01-01T00:00:00",
-            //       "passportExpiryDate": "0001-01-01T00:00:00",
-            //       "passportIssuingCountry": null,
-            //       "passportNationality": null,
-            //       "frequencyFlyerAirline": null,
-            //       "frequencyFlyerNumber": null,
-            //       "seatRequest": null,
-            //       "mealRequest": null,
-            //       "travelWithAdultID": 0,
-            //       "netRefund": 0.0,
-            //       "agentRefund": 0.0,
-            //       "refundAmount": 0.0,
-            //       "tickNoRefund": null,
-            //       "remarkRefund": null,
-            //       "StatusRefund": false,
-            //       "netReissue": 0.0,
-            //       "agentReissue": 0.0,
-            //       "reissueSelling": 0.0,
-            //       "tickNoReissueOld": null,
-            //       "tickNoReissueNew": null,
-            //       "remarkReissue": null,
-            //       "StatusReissue": false
-            //     }
-            //   ],
+            
             languageCode: "th",
           },
         ];
@@ -2207,79 +1653,7 @@ function contractInfo_copy() {
             adtPaxs: adultInfo,
             chdPaxs: childInfo,
             infPaxs: infantInfo,
-            // chdPaxs: childInfo,
-            //   "chdPaxs": [
-            //     {
-            //       "id": 2,
-            //       "paxType": "CHD",
-            //       "title": "MSTR",
-            //       "firstname": "nina",
-            //       "middlename": null,
-            //       "lastname": "aisoft",
-            //       "birthday": "2015-05-20T00:00:00",
-            //       "email": null,
-            //       "telNo": null,
-            //       "passportNumber": null,
-            //       "passportIssuingDate": "0001-01-01T00:00:00",
-            //       "passportExpiryDate": "0001-01-01T00:00:00",
-            //       "passportIssuingCountry": null,
-            //       "passportNationality": null,
-            //       "frequencyFlyerAirline": null,
-            //       "frequencyFlyerNumber": null,
-            //       "seatRequest": null,
-            //       "mealRequest": null,
-            //       "travelWithAdultID": 1,
-            //       "netRefund": 0.0,
-            //       "agentRefund": 0.0,
-            //       "refundAmount": 0.0,
-            //       "tickNoRefund": null,
-            //       "remarkRefund": null,
-            //       "StatusRefund": false,
-            //       "netReissue": 0.0,
-            //       "agentReissue": 0.0,
-            //       "reissueSelling": 0.0,
-            //       "tickNoReissueOld": null,
-            //       "tickNoReissueNew": null,
-            //       "remarkReissue": null,
-            //       "StatusReissue": false
-            //     }
-            //   ],
-            //   "infPaxs": [
-            //     {
-            //       "id": 3,
-            //       "paxType": "INF",
-            //       "title": "MSTR",
-            //       "firstname": "non",
-            //       "middlename": null,
-            //       "lastname": "aisoft",
-            //       "birthday": "2021-02-06T00:00:00",
-            //       "email": null,
-            //       "telNo": null,
-            //       "passportNumber": null,
-            //       "passportIssuingDate": "0001-01-01T00:00:00",
-            //       "passportExpiryDate": "0001-01-01T00:00:00",
-            //       "passportIssuingCountry": null,
-            //       "passportNationality": null,
-            //       "frequencyFlyerAirline": null,
-            //       "frequencyFlyerNumber": null,
-            //       "seatRequest": null,
-            //       "mealRequest": null,
-            //       "travelWithAdultID": 0,
-            //       "netRefund": 0.0,
-            //       "agentRefund": 0.0,
-            //       "refundAmount": 0.0,
-            //       "tickNoRefund": null,
-            //       "remarkRefund": null,
-            //       "StatusRefund": false,
-            //       "netReissue": 0.0,
-            //       "agentReissue": 0.0,
-            //       "reissueSelling": 0.0,
-            //       "tickNoReissueOld": null,
-            //       "tickNoReissueNew": null,
-            //       "remarkReissue": null,
-            //       "StatusReissue": false
-            //     }
-            //   ],
+            
             languageCode: "th",
           },
         ];
@@ -2429,79 +1803,7 @@ function contractInfo_copy() {
             adtPaxs: adultInfo,
             chdPaxs: childInfo,
             infPaxs: infantInfo,
-            // chdPaxs: childInfo,
-            //   "chdPaxs": [
-            //     {
-            //       "id": 2,
-            //       "paxType": "CHD",
-            //       "title": "MSTR",
-            //       "firstname": "nina",
-            //       "middlename": null,
-            //       "lastname": "aisoft",
-            //       "birthday": "2015-05-20T00:00:00",
-            //       "email": null,
-            //       "telNo": null,
-            //       "passportNumber": null,
-            //       "passportIssuingDate": "0001-01-01T00:00:00",
-            //       "passportExpiryDate": "0001-01-01T00:00:00",
-            //       "passportIssuingCountry": null,
-            //       "passportNationality": null,
-            //       "frequencyFlyerAirline": null,
-            //       "frequencyFlyerNumber": null,
-            //       "seatRequest": null,
-            //       "mealRequest": null,
-            //       "travelWithAdultID": 1,
-            //       "netRefund": 0.0,
-            //       "agentRefund": 0.0,
-            //       "refundAmount": 0.0,
-            //       "tickNoRefund": null,
-            //       "remarkRefund": null,
-            //       "StatusRefund": false,
-            //       "netReissue": 0.0,
-            //       "agentReissue": 0.0,
-            //       "reissueSelling": 0.0,
-            //       "tickNoReissueOld": null,
-            //       "tickNoReissueNew": null,
-            //       "remarkReissue": null,
-            //       "StatusReissue": false
-            //     }
-            //   ],
-            //   "infPaxs": [
-            //     {
-            //       "id": 3,
-            //       "paxType": "INF",
-            //       "title": "MSTR",
-            //       "firstname": "non",
-            //       "middlename": null,
-            //       "lastname": "aisoft",
-            //       "birthday": "2021-02-06T00:00:00",
-            //       "email": null,
-            //       "telNo": null,
-            //       "passportNumber": null,
-            //       "passportIssuingDate": "0001-01-01T00:00:00",
-            //       "passportExpiryDate": "0001-01-01T00:00:00",
-            //       "passportIssuingCountry": null,
-            //       "passportNationality": null,
-            //       "frequencyFlyerAirline": null,
-            //       "frequencyFlyerNumber": null,
-            //       "seatRequest": null,
-            //       "mealRequest": null,
-            //       "travelWithAdultID": 0,
-            //       "netRefund": 0.0,
-            //       "agentRefund": 0.0,
-            //       "refundAmount": 0.0,
-            //       "tickNoRefund": null,
-            //       "remarkRefund": null,
-            //       "StatusRefund": false,
-            //       "netReissue": 0.0,
-            //       "agentReissue": 0.0,
-            //       "reissueSelling": 0.0,
-            //       "tickNoReissueOld": null,
-            //       "tickNoReissueNew": null,
-            //       "remarkReissue": null,
-            //       "StatusReissue": false
-            //     }
-            //   ],
+           
             languageCode: "th",
           },
         ];
@@ -2675,79 +1977,7 @@ function contractInfo_copy() {
             adtPaxs: adultInfo,
             chdPaxs: childInfo,
             infPaxs: infantInfo,
-            // chdPaxs: childInfo,
-            //   "chdPaxs": [
-            //     {
-            //       "id": 2,
-            //       "paxType": "CHD",
-            //       "title": "MSTR",
-            //       "firstname": "nina",
-            //       "middlename": null,
-            //       "lastname": "aisoft",
-            //       "birthday": "2015-05-20T00:00:00",
-            //       "email": null,
-            //       "telNo": null,
-            //       "passportNumber": null,
-            //       "passportIssuingDate": "0001-01-01T00:00:00",
-            //       "passportExpiryDate": "0001-01-01T00:00:00",
-            //       "passportIssuingCountry": null,
-            //       "passportNationality": null,
-            //       "frequencyFlyerAirline": null,
-            //       "frequencyFlyerNumber": null,
-            //       "seatRequest": null,
-            //       "mealRequest": null,
-            //       "travelWithAdultID": 1,
-            //       "netRefund": 0.0,
-            //       "agentRefund": 0.0,
-            //       "refundAmount": 0.0,
-            //       "tickNoRefund": null,
-            //       "remarkRefund": null,
-            //       "StatusRefund": false,
-            //       "netReissue": 0.0,
-            //       "agentReissue": 0.0,
-            //       "reissueSelling": 0.0,
-            //       "tickNoReissueOld": null,
-            //       "tickNoReissueNew": null,
-            //       "remarkReissue": null,
-            //       "StatusReissue": false
-            //     }
-            //   ],
-            //   "infPaxs": [
-            //     {
-            //       "id": 3,
-            //       "paxType": "INF",
-            //       "title": "MSTR",
-            //       "firstname": "non",
-            //       "middlename": null,
-            //       "lastname": "aisoft",
-            //       "birthday": "2021-02-06T00:00:00",
-            //       "email": null,
-            //       "telNo": null,
-            //       "passportNumber": null,
-            //       "passportIssuingDate": "0001-01-01T00:00:00",
-            //       "passportExpiryDate": "0001-01-01T00:00:00",
-            //       "passportIssuingCountry": null,
-            //       "passportNationality": null,
-            //       "frequencyFlyerAirline": null,
-            //       "frequencyFlyerNumber": null,
-            //       "seatRequest": null,
-            //       "mealRequest": null,
-            //       "travelWithAdultID": 0,
-            //       "netRefund": 0.0,
-            //       "agentRefund": 0.0,
-            //       "refundAmount": 0.0,
-            //       "tickNoRefund": null,
-            //       "remarkRefund": null,
-            //       "StatusRefund": false,
-            //       "netReissue": 0.0,
-            //       "agentReissue": 0.0,
-            //       "reissueSelling": 0.0,
-            //       "tickNoReissueOld": null,
-            //       "tickNoReissueNew": null,
-            //       "remarkReissue": null,
-            //       "StatusReissue": false
-            //     }
-            //   ],
+            
             languageCode: "th",
           },
         ];
@@ -2789,12 +2019,10 @@ function contractInfo_copy() {
     }
   };
 
-  console.log(verlifyAge());
 
   const handleObjBooking = (e) => {
     e.preventDefault();
     const invalidAge = verlifyAge();
-    console.log(invalidAge);
 
     invalidAge.contactInfo.title = inputTitleContract;
     invalidAge.contactInfo.firstname = inputFirstNameContract;
@@ -2803,7 +2031,6 @@ function contractInfo_copy() {
     invalidAge.contactInfo.telNo = inputMobilePhoneContract;
 
     const chdPax_infPaxsArray = invalidAge.chdPaxs.concat(invalidAge.infPaxs);
-    console.log(chdPax_infPaxsArray);
     let checkdata = false;
 
     setTimeout(() => {
@@ -2958,7 +2185,6 @@ function contractInfo_copy() {
   };
 
   const handleChildPassengerDateOfBirthChange = (index, event) => {
-    console.log(event.target.value);
     if (totalAge(event.target.value) < 12 && totalAge(event.target.value) >= 2) {
       const newChildPassengers = [...childPassenger];
       newChildPassengers[index].dateOfBirth = event.target.value;
@@ -2972,7 +2198,6 @@ function contractInfo_copy() {
   };
 
   const handleInfantPassengerDateOfBirthChange = (index, event) => {
-    console.log(event.target.value);
     if (totalAge(event.target.value) < 2) {
       const newInfantPassengers = [...infantPassenger];
       newInfantPassengers[index].dateOfBirth = event.target.value;

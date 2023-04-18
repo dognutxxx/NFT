@@ -42,13 +42,11 @@ function Login() {
     let signature = await signer.signMessage(message);
     let address = ethers.utils.verifyMessage(message, signature);
     setAccount(address);
-    console.log(res); //Accout Metamask
-    console.log("signature", signature);
   };
 
   const LogoutMetamask = () => {
     setLogout(false);
-    window.location.href = "http://localhost:3000/";
+    window.location.href = "https://front-nftant-uat.azurewebsites.net/";
   };
   return (
     <div className="">

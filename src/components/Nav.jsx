@@ -14,7 +14,6 @@ function Nav() {
 
 
   sessionStorage.setItem("logoutStatus", logout);
-  console.log(logout);
 
   const connect = async () => {
     setLogout("logout");

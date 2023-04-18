@@ -24,7 +24,9 @@ function PnrContextProvider({ children }) {
     { value: "UTH", label: "Udon Thani" },
   ];
 
-  const adultInfoSession = sessionStorage?.adultPassenger || "[{}]"
+  const adultInfoSession = sessionStorage?.adultPassenger || null
+  const childInfoSession = sessionStorage?.adultPassenger || null
+  const infantInfoSession = sessionStorage?.adultPassenger || null
 
   const [dataSearch, setDataSearch] = useState();
   const [checkboxArray, setCheckboxArray] = useState([]);
@@ -41,13 +43,10 @@ function PnrContextProvider({ children }) {
   const [departDate, setDepartDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
   const [rbdList, setRBDList] = useState(null);
-  // const [adultInfo, setAdultInfo] = useState([]);
   const [adultInfo, setAdultInfo] = useState(JSON.parse(adultInfoSession));
-  console.log(adultInfo);
-  const [childInfo, setChildInfo] = useState([]);
-  console.log(childInfo);
-  const [infantInfo, setInfantInfo] = useState([]);
-  console.log(infantInfo);
+  const [childInfo, setChildInfo] = useState(JSON.parse(childInfoSession));
+  const [infantInfo, setInfantInfo] = useState(JSON.parse(infantInfoSession));
+
   const [bookingPerson, setBookingPerson] = useState(0);
 
 

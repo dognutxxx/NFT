@@ -8,7 +8,6 @@ function ResultBookingObjContextProvider({ children }) {
   const onewayTwoStopObjBookingSession = sessionStorage.onewayDirectObjBooking || null
 
   const roundDir_DirObjBookingInfoSession = sessionStorage.roundDir_DirObjBookingInfo || null
-  console.log(JSON.parse(roundDir_DirObjBookingInfoSession));
   const roundDir_OneObjBookingInfoSession = sessionStorage.roundDir_OneObjBookingInfo || null
   const roundDir_TwoObjBookingInfoSession = sessionStorage.roundDir_TwoObjBookingInfo || null
   const roundOne_DirObjBookingInfoSession = sessionStorage.roundOne_DirObjBookingInfo || null
@@ -19,16 +18,16 @@ function ResultBookingObjContextProvider({ children }) {
   const roundTwo_TwoObjBookingInfoSession = sessionStorage.roundTwo_TwoObjBookingInfo || null
 
   const [onewayDirectObjBooking, setOnewayDirectObjBooking] = useState(JSON.parse(onewayDirectObjBookingSession));
-  console.log("OnewayDirect", onewayDirectObjBooking);
+  // console.log("OnewayDirect", onewayDirectObjBooking);
 
   const [onewayOneStopObjBooking, setOnewayOneStopObjBooking] = useState(JSON.parse(onewayOneStopObjBookingSession));
-  console.log("onewayOneStop", onewayOneStopObjBooking);
+  // console.log("onewayOneStop", onewayOneStopObjBooking);
 
   const [onewayTwoStopObjBooking, setOnewayTwoStopObjBooking] = useState(JSON.parse(onewayTwoStopObjBookingSession));
-  console.log("onewayTwoStopObjBooking", onewayTwoStopObjBooking);
+  // console.log("onewayTwoStopObjBooking", onewayTwoStopObjBooking);
 
   const [roundDir_DirObjBookingInfo, setRoundDir_DirObjBookingInfo] = useState(JSON.parse(roundDir_DirObjBookingInfoSession));
-  console.log("roundDir_Dir", roundDir_DirObjBookingInfo);
+  // console.log("roundDir_Dir", roundDir_DirObjBookingInfo);
 
   const [roundDir_OneObjBookingInfo, setRoundDir_OneObjBookingInfo] = useState(JSON.parse(roundDir_OneObjBookingInfoSession));
   // console.log("roundDir_One", roundDir_OneObjBookingInfo);

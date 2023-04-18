@@ -154,7 +154,7 @@ function contractInfo_copy() {
   const { roundTwo_OneObjBookingInfo } = useResultBookingObjContext();
   const { roundTwo_TwoObjBookingInfo } = useResultBookingObjContext();
 
-  console.log("OneWay_Dir", onewayDirectObjBooking);
+  // console.log("OneWay_Dir", onewayDirectObjBooking);
   // console.log("OneWay_OneStop", onewayOneStopObjBooking);
   // console.log("OneWay_TwoStop", onewayTwoStopObjBooking);
   // console.log("Round_Dir-Dir", roundDir_DirObjBookingInfo);
@@ -233,7 +233,7 @@ function contractInfo_copy() {
   };
 
   const apiBody = findFlight();
-  console.log(apiBody);
+
   
 
   const dataNFTDetail = localStorage.NFT_;
@@ -366,7 +366,7 @@ function contractInfo_copy() {
           <div className="flex w-full p-2 gap-6 ">
             <div id="select">
               <div className="font-semibold text-[#4E1311]">Name</div>
-              {adultInfo[i]?.title} {adultInfo[i]?.firstName} {adultInfo[i]?.middlename} {adultInfo[i]?.lastname}
+              {adultInfo[i]?.title} {adultInfo[i]?.firstname} {adultInfo[i]?.middlename} {adultInfo[i]?.lastname}
             </div>
           </div>
 
@@ -919,7 +919,7 @@ function contractInfo_copy() {
 
                 {typeTrip === "R" ? (
                   <div className="my-4">
-                    <img className="" src={src2} alt="" />
+                    <img className="" src={`https://ai-r-logo.azurewebsites.net/square/${src2}.png`} alt="icon" />
                     <div className="font-semibold">{airline2}</div>
                   </div>
                 ) : null}

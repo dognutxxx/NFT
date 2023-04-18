@@ -26,7 +26,6 @@ function Header() {
   
   const { ownerAddress, setOwnerAddress } = useBetween(Share);
   const { tokenID, setTokenID } = useBetween(Share); //id ที่เป็น obj จากการเลือก NFT ID ส่งไปหน้า contractInfo
-  console.log(tokenID);
   const { opensea, setOpensea } = useBetween(Share);
   const { share, setShare } = useBetween(Share);
   const { info, setInfo } = useBetween(Share);
@@ -91,9 +90,6 @@ function Header() {
     { value: "UTH", label: "Udon Thani" },
   ];
 
-  // const [departure, setDeparture] = useState(options[0].value);
-  // const [returnOption, setReturnOption] = useState(options[0].value);
-
   const handleDepartureChange = (e) => {
     setOriginCode(e.target.value);
   };
@@ -157,12 +153,7 @@ function Header() {
   const [contract, setContract] = useState("");
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    setTimeout(() => {
-      // onValuesChange();
-      fetchPNR();
-    }, 500);
-  }, []);
+
 
   const checkPNR = async () => {
     await axios
@@ -206,6 +197,60 @@ function Header() {
     sessionStorage.setItem("dataSelectDetail",JSON.stringify(dataSelectDetail))
     encryptStorage1.setItem("access_", dataSelectDetail);
     encryptStorage1.setItem("airport_", tokenID);
+
+    if (tripType != "R") {
+      if (adult_ + child_ + infant_ + bookingPerson > 8) {
+        // console.log("segment",adult_ + child_ + infant_  + bookingPerson );
+        setSearchFlight(false);
+        return alert("limited to 8 person/flight.");
+      } else {
+        if (adult < infant) {
+          setSearchFlight(false);
+          return alert("There must be at least as many adults as babies");
+        } else {
+          setSearchFlight(true);
+        }
+
+        if (adult_ + child_ + infant_ > 8) {
+          setSearchFlight(false);
+          return alert("The total number of adults, children, and babies cannot be greater than 8.");
+        }
+
+        setAdultInfo(adultPassenger);
+        setChildInfo(childPassenger);
+        setInfantInfo(infantPassenger);
+        sessionStorage.setItem("adultPassenger",JSON.stringify(adultPassenger))
+        sessionStorage.setItem("childPassenger",JSON.stringify(childPassenger))
+        sessionStorage.setItem("infantPassenger",JSON.stringify(infantPassenger))
+        
+      }
+    } else {
+      if (adult_ * 2 + child_ * 2 + infant_ * 2 + bookingPerson > 8) {
+        // console.log("segment",adult_ * 2 + child_ * 2 + infant_ * 2 + bookingPerson );
+        setSearchFlight(false);
+        return alert("limited to 8 person/flight.");
+      } else {
+        if (adult < infant) {
+          setSearchFlight(false);
+          return alert("There must be at least as many adults as babies");
+        } else {
+          setSearchFlight(true);
+        }
+
+        if (adult_ * 2 + child_ * 2 + infant_ * 2 > 8) {
+          setSearchFlight(false);
+          return alert("The total number of adults, children, and babies cannot be greater than 8.");
+        }
+
+        setAdultInfo(adultPassenger);
+        setChildInfo(childPassenger);
+        setInfantInfo(infantPassenger);
+        sessionStorage.setItem("adultPassenger",JSON.stringify(adultPassenger))
+        sessionStorage.setItem("childPassenger",JSON.stringify(childPassenger))
+        sessionStorage.setItem("infantPassenger",JSON.stringify(infantPassenger))
+      }
+    }
+
 
     if (checkOpenseaAPI === contract) {
       // setRegised(true)
@@ -264,55 +309,11 @@ function Header() {
     }
   };
 
-  // const onValuesChange = async (el) => {
-  //   const values = +el.token_id;
-
-  //   if (values) {
-  //     setTokenID(
-  //       ...metaData.filter((el) => {
-  //         return el.edition == +values;
-  //       })
-  //     );
-
-  //     const options = { method: "GET" };
-  //     await fetch(
-  //       `https://testnets-api.opensea.io/api/v1/asset/${collectionContract}/${values}/?account_address=${account}`,
-  //       options
-  //     )
-  //       .then((response) => {
-  //         // .then(response => response.json())
-  //         // .then(response => console.log(response))
-  //         // .catch(err => console.error(err));
-  //         console.log("response",response);
-  //         if (response.status === 429) {
-  //           // Handle error here, for example by displaying a message to the user
-  //           console.error("Too many requests. Please try again later.");
-  //           errorAlert("Too many requests. Please select NFT again and wait picture to show");
-  //           return;
-  //         }
-  //         return response.json();
-  //       })
-  //       .then((response) => {
-  //         setImage(response);
-  //         encryptStorage1.setItem("NFT_", JSON.stringify(response));
-
-  //         // Check if assets array is empty
-  //         if (response) {
-  //           setCheckOpenseaAPI(response.asset_contract?.address);
-  //         } else {
-  //          console.log(err);
-  //         }
-  //       })
-  //       .catch((err) => console.log(err));
-  //   }
-  // };
 
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        // .get(`http://localhost:3001/pinata`, {
         .get(`${azure_url}/pinata`, {
-          //Get token จาก server (localhost:3001)
         })
         .then((res) => {
           setCID(res.data[0].tel);
@@ -375,7 +376,6 @@ function Header() {
   // console.log(historyNFT);
 
   const fetchPNR = async () => {
-    // await axios.get(`http://localhost:3001/fetchPNR?dna=${tokenID.dna}`).then((response) => {
     await axios.get(`${azure_url}/fetchPNR?dna=${tokenID.dna}`).then((response) => {
       setHistoryNFT(response.data);
     });
@@ -458,7 +458,7 @@ function Header() {
         sessionStorage.setItem("infantPassenger",JSON.stringify(infantPassenger))
       }
     }
-  }, [adult, child, infant, tripType ]);
+  }, [adult, child, infant, tripType]);
 
   
   const adult_ = Number(adult);
@@ -577,7 +577,7 @@ function Header() {
   }
 
   return (
-    <div className="bg-map2 ">
+    <div className="bg-map2">
       {loading ? (
         <div className="flex justify-center h-screen place-items-center bg-black opacity-70">
           <SyncLoader color={"#36d7b7"} loading={loading} size={20} />

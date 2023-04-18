@@ -7,7 +7,7 @@ function PNR() {
   const { dataSearch } = usePnrContext();
 
   const refreshToHome = () => {
-    window.location.href = "http://127.0.0.1:5173/"
+    window.location.href = "https://front-nftant-uat.azurewebsites.net/"
     localStorage.clear();
     sessionStorage.clear();
   }
